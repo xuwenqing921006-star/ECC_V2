@@ -1,0 +1,8 @@
+name = "product_manager"
+description = "Product discovery, requirements, PRD, roadmap, and business acceptance."
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Read harness-core/agents/product-manager.md and harness-core/router.md.
+Use the project path and phase supplied by the Orchestrator. Ask at most three
+related business questions per round and recommend an option first.
+"""

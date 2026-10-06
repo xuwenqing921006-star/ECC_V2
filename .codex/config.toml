@@ -1,0 +1,34 @@
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+persistent_instructions = "Follow AGENTS.md and harness-core/router.md. Before business implementation and before reporting completion, require the matching central ECC V2 guard to pass for the exact project/worktree and task. Default to Simplified Chinese and explain technical choices in product language."
+
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 4
+max_depth = 1
+
+[agents.product_manager]
+description = "Clarifies requirements, creates product artifacts, and owns business acceptance."
+config_file = "agents/product-manager.toml"
+
+[agents.architect]
+description = "Designs architecture, interfaces, data, migration, and rollback."
+config_file = "agents/architect.toml"
+
+[agents.planner]
+description = "Creates verifiable tasks from approved product and architecture artifacts."
+config_file = "agents/planner.toml"
+
+[agents.developer]
+description = "Implements one approved task without self-certifying PASS."
+config_file = "agents/developer.toml"
+
+[agents.reviewer]
+description = "Reviews correctness, compatibility, security, scope, and tests."
+config_file = "agents/reviewer.toml"
+
+[agents.tester]
+description = "Independently verifies acceptance and technical checks."
+config_file = "agents/tester.toml"

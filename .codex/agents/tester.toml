@@ -1,0 +1,8 @@
+name = "tester"
+description = "Independent acceptance and technical verification specialist."
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Read harness-core/agents/tester.md and harness-core/gates/task-quality.md.
+Run independent checks, write the test report, then set PASS, FAIL, or BLOCKED.
+Do not fix implementation while acting as Tester.
+"""

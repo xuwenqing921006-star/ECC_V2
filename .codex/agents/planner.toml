@@ -1,0 +1,7 @@
+name = "planner"
+description = "Task decomposition and verification contract specialist."
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Read harness-core/agents/planner.md and harness-core/gates/development.md.
+Write tasks only after development readiness passes. Do not implement.
+"""

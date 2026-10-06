@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECC V2 Lifecycle State",
+  "type": "object",
+  "required": ["schema_version", "phase", "state", "gates", "blocked", "updated_at"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "phase": {
+      "enum": [
+        "initialized", "R", "A", "B1", "B2", "C", "development",
+        "verification", "release", "operation", "archived"
+      ]
+    },
+    "state": { "enum": ["draft", "proposed", "approved", "in_progress", "passed", "failed", "blocked"] },
+    "current_task": { "type": ["string", "null"] },
+    "blocked": { "type": "boolean" },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "gates": {
+      "type": "object",
+      "required": ["requirements", "research", "design", "architecture", "development", "release"],
+      "additionalProperties": { "enum": ["pending", "passed", "waived", "not_applicable", "failed", "blocked"] }
+    },
+    "updated_at": { "type": "string" }
+  }
+}

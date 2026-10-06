@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "platforms": ["claude-code", "codex", "cursor"],
+  "operating_systems": ["windows"],
+  "locales": ["zh-CN", "en-US"],
+  "default_locale": "zh-CN",
+  "product_phases": ["R", "A", "B1", "B2", "C"],
+  "core_roles": [
+    "orchestrator",
+    "product-manager",
+    "researcher",
+    "product-designer",
+    "architect",
+    "planner",
+    "developer",
+    "reviewer",
+    "tester",
+    "documentation"
+  ],
+  "routes": [
+    "new-product",
+    "existing-change",
+    "bugfix",
+    "refactor",
+    "product-design-only",
+    "research",
+    "release",
+    "archive-delete"
+  ]
+}

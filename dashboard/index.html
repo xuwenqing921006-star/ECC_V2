@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECC V2 Control Center</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">PRODUCT-TO-CODE SDD</p>
+        <h1>ECC V2 控制中心</h1>
+        <p class="subtitle">从产品想法、设计和架构，到开发、测试与交付。</p>
+      </div>
+      <div id="version" class="version">v—</div>
+    </header>
+    <section class="summary">
+      <div><span>项目</span><strong id="project-count">0</strong></div>
+      <div><span>活动项目</span><strong id="active-project">未选择</strong></div>
+      <button id="refresh" type="button">刷新状态</button>
+    </section>
+    <section>
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">WORKSPACE</p>
+          <h2>项目生命周期</h2>
+        </div>
+      </div>
+      <div id="projects" class="project-grid"></div>
+      <div id="empty" class="empty" hidden>
+        <h3>还没有项目</h3>
+        <p>运行 <code>ECC_V2.cmd init my-project --name "项目名称"</code> 创建第一个项目。</p>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

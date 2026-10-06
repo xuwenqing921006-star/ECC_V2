@@ -1,0 +1,10 @@
+---
+description: ECC V2 Product-to-Code Router
+alwaysApply: true
+---
+
+Read `harness-core/router.md` before project work. Resolve the active project
+through `project-registry.json` unless the user provides a path. Platform
+files are adapters only; all workflow behavior lives under `harness-core/`.
+Run the central Router's development and completion guards for the exact
+project/worktree and task. A non-zero guard result blocks the transition.

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECC V2 Experience Record",
+  "type": "object",
+  "required": ["title", "context", "validated_action", "evidence", "scope", "source", "date", "confidence"],
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "context": { "type": "string" },
+    "root_cause": { "type": ["string", "null"] },
+    "validated_action": { "type": "string" },
+    "evidence": { "type": "string" },
+    "scope": { "enum": ["task", "project", "system"] },
+    "source": { "type": "string" },
+    "date": { "type": "string" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "secret_reviewed": { "const": true }
+  }
+}

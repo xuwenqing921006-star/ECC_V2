@@ -1,0 +1,13 @@
+---
+description: ECC V2 Product-to-Code project router
+alwaysApply: true
+---
+
+Read `__HARNESS_ROOT__/harness-core/router.md` before project work. Read
+`.sdd/project.json`, `.sdd/status.json`, and `.sdd/tasks.json`.
+Use only the workflow and language packs selected by Router.
+Explicit full-independent testing also uses the central Router and protocol;
+do not duplicate that protocol in this project.
+Before business implementation and before declaring completion, run the
+central Router's guard for this exact project/worktree and task. A non-zero
+result blocks the transition.

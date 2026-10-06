@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "id": "__PROJECT_ID__",
+  "name": "__PROJECT_NAME__",
+  "project_type": "__PROJECT_TYPE__",
+  "target_platform": null,
+  "source": "__PROJECT_SOURCE__",
+  "repo_url": null,
+  "locale": "zh-CN",
+  "created_at": "__NOW__",
+  "harness_version": "0.1.0"
+}

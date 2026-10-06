@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECC V2 Project Registry",
+  "type": "object",
+  "required": ["schema_version", "projects_root", "active_project_id", "projects"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "projects_root": { "type": "string", "minLength": 1 },
+    "active_project_id": { "type": ["string", "null"] },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "path", "mode"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+          "name": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "mode": { "enum": ["managed", "external"] }
+        }
+      }
+    }
+  }
+}

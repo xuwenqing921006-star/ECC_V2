@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "phase": "initialized",
+  "state": "draft",
+  "current_task": null,
+  "blocked": false,
+  "blockers": [],
+  "gates": {
+    "requirements": "pending",
+    "research": "pending",
+    "design": "pending",
+    "architecture": "pending",
+    "development": "pending",
+    "release": "pending"
+  },
+  "updated_at": "__NOW__"
+}

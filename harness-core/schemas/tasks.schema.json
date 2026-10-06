@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECC V2 Task Plan",
+  "type": "object",
+  "required": ["schema_version", "project_id", "tasks"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "project_id": { "type": "string" },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id", "title", "type", "description", "acceptanceCriteria",
+          "technicalChecks", "dependencies", "status", "user_gate"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^T-[0-9]{3,}$" },
+          "title": { "type": "string", "minLength": 1 },
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "acceptanceCriteria": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "technicalChecks": { "type": "array", "items": { "type": "string" } },
+          "dependencies": { "type": "array", "items": { "type": "string" } },
+          "status": { "enum": ["pending", "in_progress", "passed", "failed", "blocked"] },
+          "user_gate": { "type": "boolean" },
+          "evidence": { "type": ["string", "null"] },
+          "verification_mode": {
+            "enum": ["focused", "full_independent"]
+          },
+          "workflow_contract_version": {
+            "type": "string",
+            "enum": ["1.0"]
+          },
+          "workflow": {
+            "enum": [
+              "new-product", "existing-change", "bugfix", "refactor",
+              "product-design-only", "research", "release", "archive-delete"
+            ]
+          },
+          "change_size": {
+            "enum": ["small", "medium", "large", "bug", "refactor", "release", "maintenance"]
+          },
+          "affectedAreas": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "compatibilityConstraints": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "migrationRollback": { "type": "string", "minLength": 1 },
+          "documentation_plan": { "type": "string", "minLength": 1 },
+          "development_readiness": {
+            "type": "object",
+            "required": ["status", "checked_at", "baseline", "authorization", "evidence"],
+            "properties": {
+              "status": { "const": "passed" },
+              "checked_at": { "type": "string", "format": "date-time" },
+              "baseline": { "type": "string", "minLength": 1 },
+              "authorization": { "type": "string", "minLength": 1 },
+              "evidence": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "business_acceptance": {
+            "type": "object",
+            "required": ["status", "evidence"],
+            "properties": {
+              "status": { "const": "accepted" },
+              "evidence": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "verification_protocol_version": {
+            "type": "string",
+            "enum": ["2.0"]
+          },
+          "verification_scope": {
+            "type": "object",
+            "required": ["summary", "domains"],
+            "properties": {
+              "summary": { "type": "string", "minLength": 1 },
+              "domains": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "requirements", "environment_identity", "build_static",
+                    "unit_component", "api_integration", "database_consistency",
+                    "ui", "permissions_security", "state_workflow",
+                    "time_scheduled", "concurrency_idempotency",
+                    "resilience_recovery", "multi_client_cache",
+                    "history_audit_logs", "external_real_chain", "regression"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "test_data_disposition": {
+            "enum": [
+              "retain_for_product_owner_retest",
+              "clean_created_data_only",
+              "not_applicable"
+            ]
+          },
+          "test_brief": {
+            "type": ["string", "null"],
+            "pattern": "^\\.sdd/test-briefs/full-test-T-[0-9]{3,}\\.md$"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": { "verification_mode": { "const": "full_independent" } },
+              "required": ["verification_mode"]
+            },
+            "then": {
+              "required": ["test_brief"],
+              "properties": { "test_brief": { "type": "string" } }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
